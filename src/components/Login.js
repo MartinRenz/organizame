@@ -4,9 +4,28 @@ import { TextField, Button, Box, Typography } from '@mui/material';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [helperText, setHelperText] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validação do email.
+    const emailIsValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+    setEmailError(!emailIsValid);
+
+    // Validação da senha.
+    const passwordIsValid = password.length >= 5;
+    setPasswordError(password.length < 5);
+
+    if (!emailIsValid || !passwordIsValid) {
+      setHelperText('Please fill in the fields correctly.');
+      return;
+    }
+
+    setHelperText('');
+
     // Adicionar lógica do login.
   };
 
@@ -61,6 +80,8 @@ const Login = () => {
               margin="normal"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              error={emailError}
+              helperText={emailError ? 'Email is in invalid format.' : ''}
               sx={{
                 input: {
                   color: 'white',
@@ -78,6 +99,8 @@ const Login = () => {
               margin="normal"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              error={passwordError}
+              helperText={passwordError ? 'Password must be at least 5 characters long.' : ''}
               sx={{
                 input: {
                   color: 'white',
@@ -104,6 +127,11 @@ const Login = () => {
               Login
             </Button>
           </form>
+          {helperText && (
+            <Box sx={{ color: 'red', marginTop: 2, fontWeight: 'normal' }}>
+              {helperText}
+            </Box>
+          )}
         </Box>
 
         <Box
