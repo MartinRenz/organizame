@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
 
 const Login = () => {
@@ -7,6 +7,10 @@ const Login = () => {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [helperText, setHelperText] = useState('');
+
+  useEffect(() => {
+    document.title = 'OrganizaMe - Login';
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
