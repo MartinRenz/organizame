@@ -1,6 +1,8 @@
 # OrganizaMe 📝 (Frontend)
 OrganizaMe é a versão front-end da plataforma de gerenciamento de tarefas. OrganizaMe, uma aplicação de To-Do List.
 
+![image](https://github.com/user-attachments/assets/13dc9c10-6da6-41ad-8f9f-a063a33b6b86)
+
 ##  🛠️ Tecnologias Utilizadas:
 
 - React: Biblioteca JavaScript para construção da interface do usuário.
